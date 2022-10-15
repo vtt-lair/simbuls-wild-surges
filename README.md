@@ -9,8 +9,10 @@ A Foundry VTT module that automates Wild Surges for DnD 5e Sorcerors. Originally
 - Make sure to setup a Wild Magic Surge Table and supply the name of the table so that it draws from said table.
 - Change the Tides of Chaos feature name, if you changed on the character.
 
-- To enable it for a character, choose which type of Wild Surge the character should use under 'Special Traits' on the character sheet. 
+- To enable it for a character, choose which type of Wild Surge the character should use under 'Special Traits' on the character sheet.
+
   ![image](https://user-images.githubusercontent.com/33215552/195983919-5bf3b4b1-5f8e-40c9-b60c-d095125a4a85.png)
+  
   ![image](https://user-images.githubusercontent.com/33215552/195983897-b23ee102-c53c-46eb-86ff-b06e38bdd6e3.png)
 - Triggers on _any_ reduction in current spell slots from a character with the 'Wild Magic Surge' special trait
 - Optional homebrews
@@ -21,5 +23,6 @@ A Foundry VTT module that automates Wild Surges for DnD 5e Sorcerors. Originally
 - Blind draw surge table results, which hides the results of the surge from the players.
 
 ![image](https://user-images.githubusercontent.com/33215552/195983945-4141caf4-9d39-4921-9663-24afd65e217a.png)
+
 ![image](https://user-images.githubusercontent.com/33215552/195983952-665ff37b-20e8-466e-90c6-296d43942830.png)
 
