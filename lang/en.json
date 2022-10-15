@@ -1,0 +1,46 @@
+{
+    "option.default.disabled" : "Disabled",
+    "option.default.enabled" : "Enabled",
+
+    "setting.debug.name": "Extended debug output",
+    "setting.debug.hint": "Logs additional debugging information to the console.",
+
+    "SWS.flagsWildMagic" : "Wild Magic Surge",
+    "SWS.flagsWildMagicHint" : "Enables wild magic surge automation using the selected handler.",
+
+    "setting.wmOptions.name":  "Wild Magic Auto-Detect",
+    "setting.wmOptions.hint": "Enables or disables auto detection of Wild Magic Surges. The specific surge handler is chosen on a per actor basis and is configured via the actor's special traits menu.",
+    "option.wmOptions.standard": "Standard (PHB)",
+    "option.wmOptions.more": "More Surges",
+    "option.wmOptions.volatile": "Volatile Surges",
+    "option.wmOptions.buildup": "Accumulating Surges",
+
+    "setting.wmRollMode.name": "Table Roll Mode",
+    "setting.wmRollMode.hint": "Default uses the client's current roll mode.",
+
+    "SWS.WildMagicConsoleNormalSurgeLog" : "DnD5e Helper: Normal Surge - {d20result}",
+    "SWS.WildMagicConsoleMoreSurgeLog" : "DnD5e Helper: More Surge - {d20result} vs {spellLevel}",
+    "SWS.WildMagicConsoleVolatileSurgeLog" : "DnD5e Helper: Volatile Surge - {d20result} vs {spellLevel + d4result}(Spell: {spellLevel})(d4: {d4result})",
+    "SWS.WildMagicConsoleSurgesCalm" : "remains calm",
+    "SWS.WildMagicConsoleSurgesSurge" : "surges",
+    "SWS.WildMagicConsoleSurgesMessage" : "Wild Magic <strong>{action}</strong> as a level {spellLevel} {extraText} spell is cast!",
+    "SWS.WildMagicConsoleSurgesroll" :"Rolling for surge...",
+    "SWS.WildMagicChatSurgesMessage" : "",
+    "SWS.WildMagicChatSpeakerName": "The Weave",
+
+    "SWS.WildMagicFeatureName_name":"Wild Magic Feature Name",
+    "SWS.WildMagicFeatureName_hint":"Name of feature that represents the Sorcerer's Wild Magic Surge (default: Wild Magic Surge)",
+
+    "setting.wmTableName.name":"Wild Magic Surge Table Name",
+    "setting.wmTableName.hint":"Name of table that should be rolled on if a surge occurs (default: Wild-Magic-Surge-Table). Leave empty to skip this step.",
+    "SWS.WildMagicTableError" : "DnD5e Helper: No Wild Surge table setup",
+
+    "setting.wmToCFeatureName.name":"Tides of Chaos Feature Name",
+    "setting.wmToCFeatureName.hint":"Name of feature that represents the Sorcerer's Tides of Chaos (default: Tides of Chaos)",
+    "SWS.WildMagicTidesOfChaos_error": "DnD5e Helper: Tides of Chaos feature name not setup",
+    "setting.wmToCRecharge.name":"Recharge Tides of Chaos on surge",
+    "setting.wmToCRecharge.hint": "Enabling recharges tides of chaos when a wild magic surge occurs.",
+
+    "setting.wmWhisper.name":"Hide Wild Magic from Players",
+    "setting.wmWhisper.hint":"Whispers all rolls and table results to the GM"
+}

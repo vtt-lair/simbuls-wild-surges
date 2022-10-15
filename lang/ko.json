@@ -1,0 +1,42 @@
+{
+    "option.default.disabled" : "비활성화",
+    "option.default.enabled" : "활성화",
+
+    "SWS.flagsWildMagic" : "야생 마법 여파",
+    "SWS.flagsWildMagicHint" : "야생 마법 여파 자동화 활성화",
+
+    "setting.wmOptions.name":  "야생 마법 여파 - 자동 탐지",
+    "setting.wmOptions.hint": "야생 마법의 자동 탐지와 처리 방법을 활성화/비활성화 한다. 표준 (PHB): PHB pg. 103에 표시된 바와 동일. 추가: 혼돈 마법의 d20 <= 주문 레벨 시 혼돈의 물결이 재충전된다. 불안정: 추가와 비슷하지만 혼돈의 물결이 소모된 경우 1d4를 추가한다.",
+    "option.wmOptions.standard": "활성화 - 표준 (PHB)",
+    "option.wmOptions.more": "활성화 - 추가",
+    "option.wmOptions.volatile": "활성화 - 불안정",
+
+    "setting.wmRollMode.name": "Table Roll Mode",
+    "setting.wmRollMode.hint": "Default uses the client's current roll mode.",
+
+    "SWS.WildMagicConsoleNormalSurgeLog" : "DnD5e Helper: 기본 여파 - {d20result}",
+    "SWS.WildMagicConsoleMoreSurgeLog" : "DnD5e Helper: 추가 여파 - {d20result} vs {spellLevel}",
+    "SWS.WildMagicConsoleVolatileSurgeLog" : "DnD5e Helper: 불안정 여파 - {d20result} vs {spellLevel + d4result}(주문: {spellLevel})(d4: {d4result})",
+    "SWS.WildMagicConsoleSurgesCalm" : "평온이 유지됨",
+    "SWS.WildMagicConsoleSurgesSurge" : "급동",
+    "SWS.WildMagicConsoleSurgesMessage" : "<strong>{action}</strong>으로 레벨 {spellLevel} {extraText} 주문이 시전됩니다!",
+    "SWS.WildMagicConsoleSurgesroll" :"여파 굴림중...",
+    "SWS.WildMagicChatSurgesMessage" : "야생 마법 ({wmFeatureName}) 특성으로 인해 사용자의 레벨 {lvl} 슬롯이 소모 되었습니다! ({bWasCast}) ",
+    "SWS.WildMagicChatSpeakerName": "위브",
+
+    "SWS.WildMagicFeatureName_name":"야생 마법 특성 이름",
+    "SWS.WildMagicFeatureName_hint":"소서러의 야생 마법 여파를 나타내는 특성 이름. (기본값: Wild Magic Surge)",
+
+    "setting.wmTableName.name":"야생 마법 여파 표 이름",
+    "setting.wmTableName.hint":"여파 발생 시 굴려야 하는 표 이름 (기본값: Wild-Magic-Surge-Table). 이 단계를 건너뛰려면 비워 두십시오.",
+    "SWS.WildMagicTableError" : "DnD5e Helper: 야생 여파 표가 없습니다",
+
+    "setting.wmToCFeatureName.name":"혼돈의 물결 특성 이름",
+    "setting.wmToCFeatureName.hint":"소서러의 혼돈의 물결을 나타내는 특성 이름. (기본값: Tide of Chaos)",
+    "SWS.WildMagicTidesOfChaos_error": "DnD5e Helper: 혼돈의 물결 특성 이름이 없습니다.",
+    "setting.wmToCRecharge.name":"혼돈의 물결 재충전",
+    "setting.wmToCRecharge.hint": "활성화시 야생 마법 여파가 발동할 때 혼돈의 물결이 충전된다.",
+
+    "setting.wmWhisper.name":"플레이어로부터 야생 마법 숨기기",
+    "setting.wmWhisper.hint":"모든 굴림 및 표 결과를 GM에게 귓속말로 알린다."
+}

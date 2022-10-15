@@ -1,0 +1,46 @@
+{
+    "id": "simbul-wild-surges",
+    "name": "simbul-wild-surges",
+    "title": "Simbul's Wild Surges",
+    "description": "A module that handles automation of wild surges. Originally part of DnD 5e Helpers, split out for v10.",
+    "version": "1.0.0",
+    "authors": [
+      {
+        "name": "VTT Lair",
+        "url": "https://github.com/vtt-lair"
+      }
+    ],
+    "esmodules": [
+        "/scripts/simbuls.js",
+        "/scripts/plugins/wild-magic-surge.js"
+    ],  
+    "includes": [
+        "module.json"
+    ],
+    "languages": [
+        {
+            "lang": "en",
+            "name": "English",
+            "path": "lang/en.json"
+        }
+    ],
+    "url": "https://github.com/vtt-lair/simbuls-wild-surges",
+    "manifest": "https://github.com/vtt-lair/simbuls-wild-surges/releases/latest/download/module.json",
+    "download": "https://github.com/vtt-lair/simbuls-wild-surges/releases/download/v1.0.0/simbuls-wild-surges-v1.0.0.zip",
+    "relationships": {
+        "systems": [
+            {
+                "id": "dnd5e",
+                "type": "system",
+                "manifest": "https://gitlab.com/asacolips-projects/foundry-mods/archmage/-/raw/2.0.2/system.json",
+                "compatibility": {
+                    "verified": "2.0.2"
+                }
+            }
+        ]
+    },
+    "compatibility": {
+        "minimum": "10",
+        "verified": "10"
+    }
+}

@@ -1,0 +1,42 @@
+{
+    "option.default.disabled" : "無効",
+    "option.default.enabled" : "有効",
+
+    "SWS.flagsWildMagic" : "魔法暴走",
+    "SWS.flagsWildMagicHint" : "魔法暴走の自動化を有効化します。【標準（PHB）】PHB p.73の記述どおりの処理です。【暴走しやすい】「d20 <= 呪文レベル」で暴走が発生します。【かなり不安定】“暴走しやすい”に似ていますが, 混沌潮流が消費済の場合は呪文レベルに1d4が加算されます。",
+
+    "setting.wmOptions.name":  "魔法暴走の自動検出",
+    "setting.wmOptions.hint": "魔法暴走の自動検出を有効または無効にします。どのように処理するかはアクターシートの例外的特性で設定でき、個別に保存できます。",
+    "option.wmOptions.standard": "標準（PHB）",
+    "option.wmOptions.more": "暴走しやすい",
+    "option.wmOptions.volatile": "かなり不安定",
+
+    "setting.wmRollMode.name": "ダイスロールモード",
+    "setting.wmRollMode.hint": "規定はクライアントの現在のロールモードを使用します。",
+
+    "SWS.WildMagicConsoleNormalSurgeLog" : "DnD5e Helpers：標準的暴走 - {d20result}",
+    "SWS.WildMagicConsoleMoreSurgeLog" : "DnD5e Helpers：刺激的暴走 - {d20result} vs {spellLevel}",
+    "SWS.WildMagicConsoleVolatileSurgeLog" : "DnD5e Helpers：不安定な暴走 - {d20result} vs {spellLevel + d4result}(Spell: {spellLevel})(d4: {d4result})",
+    "SWS.WildMagicConsoleSurgesCalm" : "制御のもとに",
+    "SWS.WildMagicConsoleSurgesSurge" : "暴走を伴って",
+    "SWS.WildMagicConsoleSurgesMessage" : "<strong>{action}</strong>、レベル{spellLevel}{extraText}呪文が発動しました。",
+    "SWS.WildMagicConsoleSurgesroll" :"魔法暴走表をロールします……",
+    "SWS.WildMagicChatSurgesMessage" : "荒ぶる魔法（{wmFeatureName}）の使い手によって、レベル{lvl}のスロットが消費されました（{bWasCast}）。",
+    "SWS.WildMagicChatSpeakerName": "ウィーヴ（織）",
+
+    "SWS.WildMagicFeatureName_name":"魔法暴走の機能名称",
+    "SWS.WildMagicFeatureName_hint":"ソーサラーの“魔法暴走”を示す機能の名称を指定します（デフォルト：Wild Magic Surge）。",
+
+    "setting.wmTableName.name":"魔法暴走表",
+    "setting.wmTableName.hint":"暴走が発生したときにロールする表の名前を指定します。（デフォルト：Wild-Magic-Surge-Table）。空白にするとこの処理はスキップされます。",
+    "SWS.WildMagicTableError" : "DnD5e Helpers：魔法暴走表が設定されていません。",
+
+    "setting.wmToCFeatureName.name":"混沌潮流の機能名称",
+    "setting.wmToCFeatureName.hint":"ソーサラーの“混沌潮流”にあたる機能の名称を指定します（デフォルト：Tides of Chaos）。",
+    "SWS.WildMagicTidesOfChaos_error": "DnD5e Helpers：混沌潮流の機能名称が設定されていません。",
+    "setting.wmToCRecharge.name":"暴走で混沌潮流をリチャージする",
+    "setting.wmToCRecharge.hint": "魔法暴走が発生したときの混沌潮流のリチャージを有効にします。",
+
+    "setting.wmWhisper.name":"魔法暴走の結果をプレイヤーに隠す",
+    "setting.wmWhisper.hint":"すべてのロールと表の結果通知はDMへの秘話になります。"
+}

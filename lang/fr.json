@@ -1,0 +1,43 @@
+{
+    "option.default.disabled" : "Désactivé",
+    "option.default.enabled" : "Activé",
+
+    "SWS.flagsWildMagic" : "Sursaut de magie sauvage",
+    "SWS.flagsWildMagicHint" : "Activité l'automatisation de Sursaut de magie sauvage",
+
+    "setting.wmOptions.name":  "Détection automatique Magie Sauvage",
+    "setting.wmOptions.hint": "Active ou désactive la détection automatique de Magie Sauvage et comment elle doit être gérée. Standard (PHB): as seen on PHB pg. 103. More: surges on d20 <= spell level and recharges Tides of Chaos. Volatile: Similar to More, but adds 1d4 to the spell level if Tides of Chaos has been expended.",
+    "option.wmOptions.standard": "Activé - Standard (MdJ)",
+    "option.wmOptions.more": "Activé - Plus",
+    "option.wmOptions.volatile": "Activé - Volatile",
+    "option.wmOptions.buildup": "Activé - Accumulation",
+
+    "setting.wmRollMode.name": "Table Roll Mode",
+    "setting.wmRollMode.hint": "Default uses the client's current roll mode.",
+
+    "SWS.WildMagicConsoleNormalSurgeLog" : "DnD5e Helper: Sursaut normal - {d20result}",
+    "SWS.WildMagicConsoleMoreSurgeLog" : "DnD5e Helper: Sursaut plus - {d20result} vs {spellLevel}",
+    "SWS.WildMagicConsoleVolatileSurgeLog" : "DnD5e Helper: Sursaut volatile - {d20result} vs {spellLevel + d4result}(Spell: {spellLevel})(d4: {d4result})",
+    "SWS.WildMagicConsoleSurgesCalm" : "reste calme",
+    "SWS.WildMagicConsoleSurgesSurge" : "sursaut",
+    "SWS.WildMagicConsoleSurgesMessage" : "Magie Sauvage <strong>{action}</strong> en tant que sort de niveau {spellLevel} {extraText} est incanté!",
+    "SWS.WildMagicConsoleSurgesroll" :"Lancement de dès pour un sursaut...",
+    "SWS.WildMagicChatSurgesMessage" : "Un emplacement de niveau {lvl} a été dépensé ({bWasCast}) par un utilisateur avec la fonction Magie Sauvage ({wmFeatureName})",
+    "SWS.WildMagicChatSpeakerName": "Le Tissage",
+
+    "SWS.WildMagicFeatureName_name":"Nom de la fonction Magie Sauvage",
+    "SWS.WildMagicFeatureName_hint":"Nom de l'entité qui représente le sursaaut de Magie Sauvage du Sorcier (par défaut : Sursaut de magie sauvage)",
+
+    "setting.wmTableName.name":"Nom de la table Sursaut de Magie Sauvage",
+    "setting.wmTableName.hint":"Nom de la table qui doit être activé si un Sursaut se produit (par défaut : Wild-Magic-Surge-Table). Laissez vide pour ignorer cette étape.",
+    "SWS.WildMagicTableError" : "DnD5e Helper : aucune configuration de la table Sursaut Sauvage",
+
+    "setting.wmToCFeatureName.name":"Nom de la fonction Marées du Chaos",
+    "setting.wmToCFeatureName.hint":"Nom de la fonctionnalité qui représente les Marées du Chaos du Sorcier (par défaut : Tides of Chaos)",
+    "SWS.WildMagicTidesOfChaos_error": "DnD5e Helper: Le nom de la fonctionnalité Marées du Chaos n'est pas configuré",
+    "setting.wmToCRecharge.name":"Recharge la Marées du Chaos en Sursaut",
+    "setting.wmToCRecharge.hint": "L'activation recharge les Marées de Chaos lorsqu'un Sursaut de Magie Sauvage se produit.",
+
+    "setting.wmWhisper.name":"Masquer la Magie Sauvage des joueurs",
+    "setting.wmWhisper.hint":"Chuchote tous les jets et les résultats de la table au MJ"
+}

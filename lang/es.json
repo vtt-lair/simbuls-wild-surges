@@ -1,0 +1,42 @@
+{
+    "option.default.disabled" : "Desactivado",
+    "option.default.enabled" : "Enabled",
+
+    "SWS.flagsWildMagic" : "Wild Magic Surge",
+    "SWS.flagsWildMagicHint" : "Enables wild magic surge automation using the selected handler.",
+    
+    "setting.wmOptions.name":  "Auto detectar Magia Salvaje",
+    "setting.wmOptions.hint": "Activa o desactiva auto detección de Magia Salvaje y cómo debería manejarse. Estándar: PHB pg. 103. Más: sobrecargas en d20 <= nivel de conjuro y recarga Mareas del Caos. Volátil: Similar a Más, pero añade 1d4 al nivel de conjuro si se ha gastado Mareas del Caos.",
+    "option.wmOptions.standard": "Activado - Estándar (PHB)",
+    "option.wmOptions.more": "Activado - Más",
+    "option.wmOptions.volatile": "Activado - Volátil",
+
+    "setting.wmRollMode.name": "Table Roll Mode",
+    "setting.wmRollMode.hint": "Default uses the client's current roll mode.",
+
+    "SWS.WildMagicConsoleNormalSurgeLog" : "DnD5e Helper: Sobrecarga normal - {d20result}",
+    "SWS.WildMagicConsoleMoreSurgeLog" : "DnD5e Helper: Más sobrecarga - {d20result} vs {spellLevel}",
+    "SWS.WildMagicConsoleVolatileSurgeLog" : "DnD5e Helper: Sobrecarga volátil - {d20result} vs {spellLevel + d4result}(Spell: {spellLevel})(d4: {d4result})",
+    "SWS.WildMagicConsoleSurgesCalm" : "mantiene la calma",
+    "SWS.WildMagicConsoleSurgesSurge" : "se sobrecarga",
+    "SWS.WildMagicConsoleSurgesMessage" : "¡Magia Salvaje <strong>{action}</strong> se lanza como conjuro de nivel {spellLevel} {extraText}!",
+    "SWS.WildMagicConsoleSurgesroll" :"Tirando para sobrecarga...",
+    "SWS.WildMagicChatSurgesMessage" : "Un espacio de nivel {lvl} fue gastado ({bWasCast}) por un usuario con el rasgo de Magia Salvaje({wmFeatureName})",
+    "SWS.WildMagicChatSpeakerName": "La Urdimbre",
+
+    "SWS.WildMagicFeatureName_name":"Nombre del rasgo de Magia Salvaje",
+    "SWS.WildMagicFeatureName_hint":"Nombre del rasgo que representa el rasgo de Magia Salvaje del Hechicero (por defecto: Wild Magic Surge)",
+
+    "setting.wmTableName.name":"Nombre de la tabla de sobrecarga de Magia Salvaje",
+    "setting.wmTableName.hint":"Nombre de la tabla en la que tirar si ocurre una sobrecarga (por defecto: Wild-Magic-Surge-Table). Deja en blanco para saltar este paso.",
+    "SWS.WildMagicTableError" : "DnD5e Helper: Ninguna tabla de Sobrecarga Salvaje configurada",
+
+    "setting.wmToCFeatureName.name":"Nombre del rasgo de Mareas Salvajes",
+    "setting.wmToCFeatureName.hint":"Nombre del rasgo que representa las Mareas Salvajes del hechicero (por defecto: Tides of Chaos)",
+    "SWS.WildMagicTidesOfChaos_error": "DnD5e Helper: Nombre de rasgo de Mareas Salvajes no configurado",
+    "setting.wmToCRecharge.name":" Recharge Tides of Chaos on surge",
+    "setting.wmToCRecharge.hint": " Enabling recharges tides of chaos when a wild magic surge occurs.",
+
+    "setting.wmWhisper.name":"No mostrar Magia Salvaje a los jugadores",
+    "setting.wmWhisper.hint":"Susurra todas las tiradas y resultados de la tabla al GM"
+}
