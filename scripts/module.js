@@ -1,6 +1,6 @@
 import { logger } from './logger.js';
 
-const NAME = "simbul-wild-surges";
+const NAME = "simbuls-wild-surges";
 const PATH = `/modules/${NAME}`;
 const TITLE = "Simbul's Wild Surges";
 
@@ -17,7 +17,7 @@ export class MODULE{
 
     static async build(){
         MODULE.data = {
-        name : NAME, path : PATH, title : TITLE
+            name : NAME, path : PATH, title : TITLE
         };
     }
 

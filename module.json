@@ -1,6 +1,6 @@
 {
-    "id": "simbul-wild-surges",
-    "name": "simbul-wild-surges",
+    "id": "simbuls-wild-surges",
+    "name": "simbuls-wild-surges",
     "title": "Simbul's Wild Surges",
     "description": "A module that handles automation of wild surges. Originally part of DnD 5e Helpers, split out for v10.",
     "version": "1.0.0",

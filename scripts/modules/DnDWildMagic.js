@@ -199,7 +199,7 @@ class WildMagicAPI {
    */
   isTidesCharged(actor){
     let item = DnDWildMagic._getTides(actor);
-    const itemCharge =  item?.data?.data?.uses?.value != 0;
+    const itemCharge =  item?.system?.uses?.value != 0;
 
     let resource = DnDWildMagic._getTidesResource(actor);
     const resourceCharge = !!resource.value 
@@ -221,7 +221,7 @@ class WildMagicAPI {
     const item = DnDWildMagic._getTides(actor);
 
     if(item)
-      updates.item.push({_id:item.id, "data.uses.value" : item.data.data.uses.max });
+      updates.item.push({_id:item.id, "system.uses.value" : item.system.uses.max });
 
     const resource = DnDWildMagic._getTidesResource(actor);
     if(resource)
@@ -414,7 +414,7 @@ export class DnDWildMagic {
 
   static _getTidesResource(actor){
     const name = MODULE.setting("wmToCFeatureName") ?? MODULE[NAME].feature;
-    return Object.entries(actor.data.data.resources).reduce((acc, [key, obj]) => {
+    return Object.entries(actor.system.resources).reduce((acc, [key, obj]) => {
       if(obj.label === name)
         return { key, ...obj};
       return acc;
@@ -450,15 +450,15 @@ export class DnDWildMagic {
   static slotExpended(actor, update) {
 
     /** Exit if hook is not the product of a spell change */
-    const spells = !!getProperty(update, "data.spells");
+    const spells = !!getProperty(update, "system.spells");
     if( !spells ) return false;
 
     /** Find the spell level just cast */
     const spellLvlNames = ["spell0", "spell1", "spell2", "spell3", "spell4", "spell5", "spell6", "spell7", "spell8", "spell9"];
-    let lvl = spellLvlNames.findIndex(name => { return getProperty(update, "data.spells." + name) });
+    let lvl = spellLvlNames.findIndex(name => { return getProperty(update, "system.spells." + name) });
 
-    const preCastSlotCount = getProperty(actor.data.data.spells, spellLvlNames[lvl] + ".value");
-    const postCastSlotCount = getProperty(update, "data.spells." + spellLvlNames[lvl] + ".value");
+    const preCastSlotCount = getProperty(actor.system.spells, spellLvlNames[lvl] + ".value");
+    const postCastSlotCount = getProperty(update, "system.spells." + spellLvlNames[lvl] + ".value");
     const wasCast = (preCastSlotCount - postCastSlotCount) > 0;
 
     logger.debug(`Slot Expended check | `, { actor, lvl, wasCast , FeatureName : MODULE.setting("wmToCFeatureName") ?? MODULE[NAME].feature });
