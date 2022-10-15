@@ -6,4 +6,4 @@
 - kekilla (pman159@gmail.com)
 
 # Simbul's Wild Magic
-- vttlair (wdohse@gmail.com)
+- vtt-lair (wdohse@gmail.com)
