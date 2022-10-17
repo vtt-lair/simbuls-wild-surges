@@ -1,5 +1,6 @@
 import { MODULE } from "../module.js";
-import { logger } from "../logger.js";
+import { logger } from '../../../simbuls-athenaeum/scripts/logger.js';
+import { HELPER } from '../../../simbuls-athenaeum/scripts/helper.js';
 
 const NAME = "DnDWildMagic";
 
@@ -160,7 +161,7 @@ class WildMagicAPI {
   async generateChatData(info){
 
     const data = {
-      action : info.surgeOccured ? MODULE.localize("SWS.WildMagicConsoleSurgesSurge") : MODULE.localize("SWS.WildMagicConsoleSurgesCalm"),
+      action : info.surgeOccured ? HELPER.localize("SWS.WildMagicConsoleSurgesSurge") : HELPER.localize("SWS.WildMagicConsoleSurgesCalm"),
       spellLevel: info.spellLevel ?? 0,
       resultText : `[[/r ${info.surgeRoll.formula}cs<=${info.targetRoll.formula} #${info.surgeRoll.formula}cs<=${info.targetRoll.formula}]]{${info.surgeRoll.total} <= ${info.targetRoll.total}}`,
       extraText: info.extraText ?? '',
@@ -174,8 +175,8 @@ class WildMagicAPI {
 
     rollHtml.find('.dice-formula').text(`${info.surgeRoll.formula}cs<=${info.targetRoll.formula}`);
 
-    const whisper = info.whisper ?? (MODULE.setting("wmWhisper") ? ChatMessage.getWhisperRecipients("GM") : []);
-    const speaker = info.speaker ?? ChatMessage.getSpeaker({ alias : MODULE.localize("SWS.WildMagicChatSpeakerName")});
+    const whisper = info.whisper ?? (MODULE.data.name, HELPER.setting(MODULE.data.name, "wmWhisper") ? ChatMessage.getWhisperRecipients("GM") : []);
+    const speaker = info.speaker ?? ChatMessage.getSpeaker({ alias : HELPER.localize("SWS.WildMagicChatSpeakerName")});
     const content = info.content ?? await renderTemplate(`modules/${MODULE.data.name}/templates/WildMagicSurgeChat.html`, {
       mainMessage: game.i18n.format("SWS.WildMagicConsoleSurgesMessage", { ...data }),
       roll: rollHtml.prop("outerHTML")
@@ -236,7 +237,7 @@ class WildMagicAPI {
  */
 export class DnDWildMagic {
   static register(){
-    logger.info("Registering Wild Magic Surge");
+    logger.info(MODULE.data.name, "Registering Wild Magic Surge");
     DnDWildMagic.defaults();
     DnDWildMagic.settings();
     DnDWildMagic.globals();
@@ -255,17 +256,17 @@ export class DnDWildMagic {
 
     /* {blindroll : CHAT.RollBlind} */
     let rollModes = Object.entries(CONST.DICE_ROLL_MODES).reduce( (acc, [key, value]) => {
-          acc[value] = MODULE.localize(`CHAT.Roll${key.toLowerCase().capitalize()}`);         
+          acc[value] = HELPER.localize(`CHAT.Roll${key.toLowerCase().capitalize()}`);         
           return acc
         },{})
-    rollModes['default'] = MODULE.localize('Default');
+    rollModes['default'] = HELPER.localize('Default');
 
     const settingsData = {
       wmOptions : {
         scope: "world", config, default: 0, type: Number,
         choices: {
-          0: MODULE.localize("option.default.disabled"),
-          1: MODULE.localize("option.default.enabled"),
+          0: HELPER.localize("option.default.disabled"),
+          1: HELPER.localize("option.default.enabled"),
         },
         onchange : (/*...args*/) => {
           //logger.info("Settings Change!", args);
@@ -326,7 +327,7 @@ export class DnDWildMagic {
     try {
       handlerResult = await handler(actor, surgeData)
     } catch (e) {
-      logger.error(e);
+      logger.error(MODULE.data.name, e);
       return false;
     }
 
@@ -366,8 +367,8 @@ export class DnDWildMagic {
       specialTrait = ''; 
     }
 
-    const enabled = MODULE.setting('wmOptions') !== 0;
-    logger.debug(`_preUpdateActor | Logic (e/s) | `, specialTrait);
+    const enabled = HELPER.setting(MODULE.data.name, 'wmOptions') !== 0;
+    logger.debug(MODULE.data.name, `_preUpdateActor | Logic (e/s) | `, specialTrait);
     if(specialTrait == '' || !enabled) return;
 
     /* otherwise, call preCheck to deny the surge or prep data needed for it */
@@ -378,7 +379,7 @@ export class DnDWildMagic {
     try{
       data = preCheck(actor, update);
     } catch (e) {
-      logger.error(e)
+      logger.error(MODULE.data.name, e)
       return
     }
 
@@ -389,31 +390,31 @@ export class DnDWildMagic {
 
   }
 
-  static async _rollTable(uuid, rollMode = MODULE.setting('wmRollMode')) {
+  static async _rollTable(uuid, rollMode = HELPER.setting(MODULE.data.name, 'wmRollMode')) {
 
     rollMode = rollMode == 'default' ? game.settings.get("core", "rollMode") : rollMode;
     const table = await fromUuid(uuid);
 
-    logger.debug("_rollTable | ", {rollMode, name: table?.name, table});
+    logger.debug(MODULE.data.name, "_rollTable | ", {rollMode, name: table?.name, table});
     
     if(table){
       return await table.draw({ rollMode });
     }
 
-    return logger.error(`Failed to get Table [${uuid}]`);
+    return logger.error(MODULE.data.name, `Failed to get Table [${uuid}]`);
   }
 
   static _getTides(actor){
-    const name = MODULE.setting("wmToCFeatureName") ?? MODULE[NAME].feature;
+    const name = HELPER.setting(MODULE.data.name, "wmToCFeatureName") ?? MODULE[NAME].feature;
     const item = actor.items.getName(name);
 
-    logger.debug("_getTides | ", {name, item});
+    logger.debug(MODULE.data.name, "_getTides | ", {name, item});
 
     if(item) return item;
   }
 
   static _getTidesResource(actor){
-    const name = MODULE.setting("wmToCFeatureName") ?? MODULE[NAME].feature;
+    const name = HELPER.setting(MODULE.data.name, "wmToCFeatureName") ?? MODULE[NAME].feature;
     return Object.entries(actor.system.resources).reduce((acc, [key, obj]) => {
       if(obj.label === name)
         return { key, ...obj};
@@ -428,8 +429,8 @@ export class DnDWildMagic {
     handlerKeys.forEach( key => choices[key] = key );
 
     CONFIG.DND5E.characterFlags.wildMagic = {
-      hint: MODULE.localize("SWS.flagsWildMagicHint"),
-      name: MODULE.localize("SWS.flagsWildMagic"),
+      hint: HELPER.localize("SWS.flagsWildMagicHint"),
+      name: HELPER.localize("SWS.flagsWildMagic"),
       section: "Feats",
       type: String,
       choices
@@ -461,7 +462,7 @@ export class DnDWildMagic {
     const postCastSlotCount = getProperty(update, "system.spells." + spellLvlNames[lvl] + ".value");
     const wasCast = (preCastSlotCount - postCastSlotCount) > 0;
 
-    logger.debug(`Slot Expended check | `, { actor, lvl, wasCast , FeatureName : MODULE.setting("wmToCFeatureName") ?? MODULE[NAME].feature });
+    logger.debug(MODULE.data.name, `Slot Expended check | `, { actor, lvl, wasCast , FeatureName : HELPER.setting(MODULE.data.name, "wmToCFeatureName") ?? MODULE[NAME].feature });
 
     if (wasCast && lvl > 0) {
       return {
@@ -507,7 +508,7 @@ export class DnDWildMagic {
       results.surge = true;
 
       /* should I recharge tides for this surge? */
-      const rechargeTides = MODULE.setting('wmToCRecharge');
+      const rechargeTides = HELPER.setting(MODULE.data.name, 'wmToCRecharge');
 
       if(rechargeTides && !WildMagic.isTidesCharged(actor)){
 
@@ -521,7 +522,7 @@ export class DnDWildMagic {
       }
 
       let table;
-      const tableName = MODULE.setting('wmTableName');
+      const tableName = HELPER.setting(MODULE.data.name, 'wmTableName');
       if(tableName) {
         try {
           table = game.tables.getName(tableName) ?? await fromUuid(tableName);

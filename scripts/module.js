@@ -1,4 +1,5 @@
-import { logger } from './logger.js';
+import { logger } from '../../simbuls-athenaeum/scripts/logger.js';
+import { HELPER } from '../../simbuls-athenaeum/scripts/helper.js'
 
 const NAME = "simbuls-wild-surges";
 const PATH = `/modules/${NAME}`;
@@ -9,9 +10,9 @@ const TITLE = "Simbul's Wild Surges";
  * @class
  * @property {Function} patch
  */
-export class MODULE{
+export class MODULE {
     static async register(){
-        logger.info("Initializing Module");
+        logger.info(NAME, "Initializing Module");
         MODULE.globals();
     }
 
@@ -25,23 +26,12 @@ export class MODULE{
         game.dnd5e.wildsurges = {};
     }
 
-    /**
-     * @returns any
-     */
-    static setting(key){
-        return game.settings.get(MODULE.data.name, key);
-    }
-
-    static localize(...args){
-        return game.i18n.localize(...args);
-    }
-
     static applySettings(settingsData){
         Object.entries(settingsData).forEach(([key, data])=> {
             game.settings.register(
                 MODULE.data.name, key, {
-                    name : MODULE.localize(`setting.${key}.name`),
-                    hint : MODULE.localize(`setting.${key}.hint`),
+                    name : HELPER.localize(`setting.${key}.name`),
+                    hint : HELPER.localize(`setting.${key}.hint`),
                     ...data
                 }
             );
