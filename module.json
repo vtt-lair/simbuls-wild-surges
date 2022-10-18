@@ -11,7 +11,7 @@
       }
     ],
     "esmodules": [
-        "/scripts/simbuls.js",
+        "/scripts/wild-magic.js",
         "/scripts/plugins/wild-magic-surge.js"
     ],  
     "includes": [
@@ -60,6 +60,15 @@
                 "manifest": "https://gitlab.com/asacolips-projects/foundry-mods/archmage/-/raw/2.0.2/system.json",
                 "compatibility": {
                     "verified": "2.0.2"
+                }
+            }
+        ],
+        "requires": [
+            {
+                "id": "simbuls-athenaeum",
+                "type": "module",
+                "compatibility": {
+                "verified": "1.0.0"
                 }
             }
         ]
