@@ -226,7 +226,7 @@ class WildMagicAPI {
 
     const resource = DnDWildMagic._getTidesResource(actor);
     if(resource)
-      updates.actor = { [`data.resources.${resource.key}.value`] : resource.max }
+      updates.actor = { [`system.resources.${resource.key}.value`] : resource.max }
     return updates;
   }
 }
