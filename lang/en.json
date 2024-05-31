@@ -2,8 +2,8 @@
     "option.default.disabled" : "Disabled",
     "option.default.enabled" : "Enabled",
 
-    "setting.debug.name": "Extended debug output",
-    "setting.debug.hint": "Logs additional debugging information to the console.",
+    "setting.debugWildMagic.name": "Extended debug output",
+    "setting.debugWildMagic.hint": "Logs additional debugging information to the console.",
 
     "SWS.flagsWildMagic" : "Wild Magic Surge",
     "SWS.flagsWildMagicHint" : "Enables wild magic surge automation using the selected handler.",
@@ -42,5 +42,5 @@
     "setting.wmToCRecharge.hint": "Enabling recharges tides of chaos when a wild magic surge occurs.",
 
     "setting.wmWhisper.name":"Hide Wild Magic from Players",
-    "setting.wmWhisper.hint":"Whispers all rolls and table results to the GM"
+    "setting.wmWhisper.hint":"Whispers all rolls and table results to the GM"    
 }

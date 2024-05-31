@@ -186,6 +186,7 @@ class WildMagicAPI {
       content,
       speaker,
       whisper,
+      rolls: [info.surgeRoll],
     };
   }
 
@@ -286,9 +287,12 @@ export class DnDWildMagic {
       },
       wmRollMode : {
         scope: "world", config, default: 'default', type: String,
-        choices: rollModes 
-        
-      }
+        choices: rollModes,         
+      },
+      // Misc Config
+      debugWildMagic : {
+        scope : "client", config, group: 'misc', default : false, type : Boolean,
+    }
     };
 
     MODULE.applySettings(settingsData);
@@ -368,7 +372,11 @@ export class DnDWildMagic {
     }
 
     const enabled = HELPER.setting(MODULE.data.name, 'wmOptions') !== 0;
+<<<<<<< Updated upstream
     logger.debug(MODULE.data.name, `_preUpdateActor | Logic (e/s) | `, specialTrait);
+=======
+    logger.debug(game.settings.get(MODULE.data.name, "debugWildMagic"), `${NAME} | _preUpdateActor | Logic (e/s) | `, specialTrait);
+>>>>>>> Stashed changes
     if(specialTrait == '' || !enabled) return;
 
     /* otherwise, call preCheck to deny the surge or prep data needed for it */
@@ -395,7 +403,11 @@ export class DnDWildMagic {
     rollMode = rollMode == 'default' ? game.settings.get("core", "rollMode") : rollMode;
     const table = await fromUuid(uuid);
 
+<<<<<<< Updated upstream
     logger.debug(MODULE.data.name, "_rollTable | ", {rollMode, name: table?.name, table});
+=======
+    logger.debug(game.settings.get(MODULE.data.name, "debugWildMagic"), `${NAME} | _rollTable | `, {rollMode, name: table?.name, table});
+>>>>>>> Stashed changes
     
     if(table){
       return await table.draw({ rollMode });
@@ -408,7 +420,11 @@ export class DnDWildMagic {
     const name = HELPER.setting(MODULE.data.name, "wmToCFeatureName") ?? MODULE[NAME].feature;
     const item = actor.items.getName(name);
 
+<<<<<<< Updated upstream
     logger.debug(MODULE.data.name, "_getTides | ", {name, item});
+=======
+    logger.debug(game.settings.get(MODULE.data.name, "debugWildMagic"), `${NAME} | _getTides | `, {name, item});
+>>>>>>> Stashed changes
 
     if(item) return item;
   }
@@ -462,7 +478,11 @@ export class DnDWildMagic {
     const postCastSlotCount = getProperty(update, "system.spells." + spellLvlNames[lvl] + ".value");
     const wasCast = (preCastSlotCount - postCastSlotCount) > 0;
 
+<<<<<<< Updated upstream
     logger.debug(MODULE.data.name, `Slot Expended check | `, { actor, lvl, wasCast , FeatureName : HELPER.setting(MODULE.data.name, "wmToCFeatureName") ?? MODULE[NAME].feature });
+=======
+    logger.debug(game.settings.get(MODULE.data.name, "debugWildMagic"), `${NAME} | Slot Expended check | `, { actor, lvl, wasCast , FeatureName : HELPER.setting(MODULE.data.name, "wmToCFeatureName") ?? MODULE[NAME].feature });
+>>>>>>> Stashed changes
 
     if (wasCast && lvl > 0) {
       return {
