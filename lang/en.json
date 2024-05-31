@@ -42,5 +42,8 @@
     "setting.wmToCRecharge.hint": "Enabling recharges tides of chaos when a wild magic surge occurs.",
 
     "setting.wmWhisper.name":"Hide Wild Magic from Players",
-    "setting.wmWhisper.hint":"Whispers all rolls and table results to the GM"    
+    "setting.wmWhisper.hint":"Whispers all rolls and table results to the GM",
+
+    "setting.wmResetBuildupOnLongRestRecharge.name": "Reset Accumulating Surge Counter on Long Rest",
+    "setting.wmResetBuildupOnLongRestRecharge.hint": "Enabling resets the accumulating counter to 1 on a long rest"
 }
