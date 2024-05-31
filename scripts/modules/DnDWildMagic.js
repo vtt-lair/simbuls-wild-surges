@@ -282,6 +282,9 @@ export class DnDWildMagic {
       wmToCRecharge : {
         scope: "world", config, default: false, type: Boolean,
       },
+      wmResetBuildupOnLongRestRecharge : {
+        scope: "world", config, default: false, type: Boolean,
+      },
       wmWhisper : {
         scope: "world", config, default: false, type: Boolean,
       },
@@ -314,8 +317,18 @@ export class DnDWildMagic {
     globalThis.WildMagic = new WildMagicAPI();
   }
 
-  static _updateActor(actor, _, options, user){
-    if(!options.wmsHandler || user !== game.user.id) return;
+  static _updateActor(actor, _, options, user) {
+    if (
+      options.isRest
+      && actor.getFlag('dnd5e', 'wildMagic') == 'Accumulating Surges'
+      && HELPER.setting(MODULE.data.name, 'wmResetBuildupOnLongRestRecharge')
+    ) {
+      let threshold = {};
+      threshold[`flags.${MODULE.data.name}.wildMagicBuildupThreshold`] = 1;
+      actor.update(threshold);
+    }
+
+    if (!options.wmsHandler || user !== game.user.id) return;
     DnDWildMagic._runHandler(options.wmsHandler, actor, options.wmsData);
   }
 
@@ -373,7 +386,7 @@ export class DnDWildMagic {
 
     const enabled = HELPER.setting(MODULE.data.name, 'wmOptions') !== 0;
     logger.debug(game.settings.get(MODULE.data.name, "debugWildMagic"), `${NAME} | _preUpdateActor | Logic (e/s) | `, specialTrait);
-    if(specialTrait == '' || !enabled) return;
+    if (specialTrait == '' || !enabled) return;
 
     /* otherwise, call preCheck to deny the surge or prep data needed for it */
     const preCheck = globalThis.WildMagic.getPreCheck(specialTrait);
@@ -381,7 +394,7 @@ export class DnDWildMagic {
 
     let data;
     try{
-      data = preCheck(actor, update);
+      data = preCheck(actor, update, options);
     } catch (e) {
       logger.error(MODULE.data.name, e)
       return
@@ -391,7 +404,6 @@ export class DnDWildMagic {
       options.wmsData = data;
       options.wmsHandler = specialTrait;
     }
-
   }
 
   static async _rollTable(uuid, rollMode = HELPER.setting(MODULE.data.name, 'wmRollMode')) {
@@ -514,7 +526,7 @@ export class DnDWildMagic {
       /* should I recharge tides for this surge? */
       const rechargeTides = HELPER.setting(MODULE.data.name, 'wmToCRecharge');
 
-      if(rechargeTides && !WildMagic.isTidesCharged(actor)){
+      if (rechargeTides && !WildMagic.isTidesCharged(actor)){
 
         /* get the actor and/or item update information for
          * recharging tides
@@ -527,10 +539,10 @@ export class DnDWildMagic {
 
       let table;
       const tableName = HELPER.setting(MODULE.data.name, 'wmTableName');
-      if(tableName) {
+      if (tableName) {
         try {
           table = game.tables.getName(tableName) ?? await fromUuid(tableName);
-        }catch(err){
+        } catch(err){
           // nope
         }
       }
