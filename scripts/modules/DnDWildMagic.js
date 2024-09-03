@@ -467,15 +467,15 @@ export class DnDWildMagic {
   static slotExpended(actor, update) {
 
     /** Exit if hook is not the product of a spell change */
-    const spells = !!getProperty(update, "system.spells");
+    const spells = !!foundry.utils.getProperty(update, "system.spells");
     if( !spells ) return false;
 
     /** Find the spell level just cast */
     const spellLvlNames = ["spell0", "spell1", "spell2", "spell3", "spell4", "spell5", "spell6", "spell7", "spell8", "spell9"];
-    let lvl = spellLvlNames.findIndex(name => { return getProperty(update, "system.spells." + name) });
+    let lvl = spellLvlNames.findIndex(name => { return foundry.utils.getProperty(update, "system.spells." + name) });
 
-    const preCastSlotCount = getProperty(actor.system.spells, spellLvlNames[lvl] + ".value");
-    const postCastSlotCount = getProperty(update, "system.spells." + spellLvlNames[lvl] + ".value");
+    const preCastSlotCount = foundry.utils.getProperty(actor.system.spells, spellLvlNames[lvl] + ".value");
+    const postCastSlotCount = foundry.utils.getProperty(update, "system.spells." + spellLvlNames[lvl] + ".value");
     const wasCast = (preCastSlotCount - postCastSlotCount) > 0;
 
     logger.debug(game.settings.get(MODULE.data.name, "debugWildMagic"), `${NAME} | Slot Expended check | `, { actor, lvl, wasCast , FeatureName : HELPER.setting(MODULE.data.name, "wmToCFeatureName") ?? MODULE[NAME].feature });
@@ -502,8 +502,8 @@ export class DnDWildMagic {
         roll = new Roll(roll);
       }
 
-      if( roll.total == undefined ) {
-        await roll.evaluate({async: true});
+      if( roll.total == undefined || roll.total === 0) {
+        await roll.evaluate();
       }
 
       return roll;
