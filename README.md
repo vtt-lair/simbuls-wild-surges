@@ -3,7 +3,7 @@
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/N4N36ZSPQ)
 
 # Simbul's Wild Surges
-A Foundry VTT module that automates Wild Surges for DnD 5e Sorcerors. Originally part of [DnD 5e Helpers](https://github.com/trioderegion/dnd5e-helpers), but due to that module no longer being maintained this section has been split into it's own module for v10.
+A Foundry VTT module that automates Wild Surges for DnD 5e Sorcerors. Originally part of [DnD 5e Helpers](https://github.com/trioderegion/dnd5e-helpers), but due to that module no longer being maintained this section has been split into its own module for v14.
 
 ### Settings
 ![image](https://user-images.githubusercontent.com/33215552/195983860-dc75d9f6-19bb-4bcd-975a-38e39aa2a25a.png)

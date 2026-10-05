@@ -1,4 +1,5 @@
 import {MODULE} from "../module.js"
+import {DnDWildMagic} from "../modules/DnDWildMagic.js"
 
 /**
  * Implements stock surge rules, and two homebrew variants. "More Surges" will surge if the
@@ -45,10 +46,10 @@ class WildMagicSurge {
   
   /* surges on 1d20 <= (number of spells since the last surge + 1) */
   static async buildupHandler(actor, surgeData) {
-    const targetRoll = actor.getFlag(MODULE.data.name, 'wildMagicBuildupThreshold') ?? 1;
+    const targetRoll = DnDWildMagic.getBuildupThreshold(actor);
     
     const surgeResult = await WildMagic.templates.handler(actor, surgeData, `${targetRoll}`);
-    surgeResult.actorUpdates[`flags.${MODULE.data.name}.wildMagicBuildupThreshold`] = surgeResult.surge ? 1 : targetRoll + 1;
+    await DnDWildMagic.setBuildupThreshold(actor, surgeResult.surge ? 1 : targetRoll + 1);
 
     return surgeResult;
   }

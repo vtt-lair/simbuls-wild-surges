@@ -323,9 +323,7 @@ export class DnDWildMagic {
       && actor.getFlag('dnd5e', 'wildMagic') == 'Accumulating Surges'
       && HELPER.setting(MODULE.data.name, 'wmResetBuildupOnLongRestRecharge')
     ) {
-      let threshold = {};
-      threshold[`flags.${MODULE.data.name}.wildMagicBuildupThreshold`] = 1;
-      actor.update(threshold);
+      DnDWildMagic.setBuildupThreshold(actor, 1);
     }
 
     if (!options.wmsHandler || user !== game.user.id) return;
@@ -436,6 +434,53 @@ export class DnDWildMagic {
         return { key, ...obj};
       return acc;
     }, false);
+  }
+
+  /**
+   * Retrieves the Wild Magic Buildup threshold from an Active Effect.
+   * Falls back to flags for backward compatibility.
+   * @param {Actor} actor 
+   * @returns {number}
+   */
+  static getBuildupThreshold(actor){
+    // In V14, effect changes are nested in system.changes
+    const effect = actor.effects.find(e => e.name === "Wild Magic Buildup");
+    if (effect && effect.system.changes && effect.system.changes.length > 0) {
+      return parseInt(effect.system.changes[0].value) || 1;
+    }
+    // Backward compatibility for existing flags
+    return actor.getFlag(MODULE.data.name, 'wildMagicBuildupThreshold') ?? 1;
+  }
+
+  /**
+   * Updates or creates the Wild Magic Buildup Active Effect.
+   * @param {Actor} actor 
+   * @param {number} value 
+   */
+  static async setBuildupThreshold(actor, value){
+    // Use .effects.find and effect.name instead of the deprecated getActiveEffectByName
+    const effect = actor.effects.find(e => e.name === "Wild Magic Buildup");
+    
+    if (effect) {
+      await actor.updateEmbeddedDocuments('ActiveEffect', [{
+        _id: effect.id,
+        // In V14, the changes array moves inside system
+        system: {
+          changes: [{ key: "value", mode: 5 /* OVERRIDE */, value: String(value) }]
+        }
+      }]);
+    } else {
+      await actor.createEmbeddedDocuments('ActiveEffect', [{
+        name: "Wild Magic Buildup",
+        img: "icons/magic/symbols/star-solid-blue.webp",
+        // In V14, the changes array moves inside system
+        system: {
+            changes: [{ key: "value", mode: 5 /* OVERRIDE */, value: String(value) }]
+        },
+        duration: { rounds: 999999 }, // Use rounds instead of the old undefined 'ma' or 'time'
+        description: "Tracks the number of spells cast since the last Wild Magic surge."
+      }]);
+    }
   }
 
   static _setTraitsOptions(handlerKeys) {
